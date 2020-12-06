@@ -4,12 +4,13 @@ const telegramBotToken = process.env.BOT_TOKEN;
 const { db, massivFilmov } = require('./db');
 const { allInOneDone } = require('./app');
 const bot = new Telegraf(telegramBotToken);
+let whatFilm = '';
 
 bot.start((ctx) => ctx.reply('Greetings, '));
 bot.help((ctx) => ctx.reply('Send me a sticker'));
 bot.command('davaj', async (ctx) => {
   let indexFilma = Math.floor(Math.random() * massivFilmov.length);
-  let whatFilm = massivFilmov[indexFilma];
+  whatFilm = massivFilmov[indexFilma];
   const whatPhrase = db[massivFilmov[indexFilma]];
   console.log('in the bot.js ', whatFilm);
   const wordsOnly = whatPhrase.split(' ');
