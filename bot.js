@@ -6,7 +6,7 @@ const { allInOneDone } = require('./allInOneFunction');
 const bot = new Telegraf(telegramBotToken);
 let whatFilm = '';
 
-bot.start((ctx) => ctx.reply('Greetings, '));
+bot.start((ctx) => ctx.reply(`Greetings, ${ctx.message.from.username}`));
 bot.help((ctx) => ctx.reply('Send me a sticker'));
 bot.command('davaj', async (ctx) => {
   let indexFilma = Math.floor(Math.random() * massivFilmov.length);
