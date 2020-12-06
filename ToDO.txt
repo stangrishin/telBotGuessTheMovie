@@ -1,4 +1,4 @@
-1) Add commas and other punctuation marks
+DONE(1) Add commas and other punctuation marks)
 2) Add parser
 3) Exclude Proper Names
 4) Modify the bot itself:
