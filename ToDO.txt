@@ -1,0 +1,16 @@
+1) Add commas and other punctuation marks
+2) Add parser
+3) Exclude Proper Names
+4) Modify the bot itself:
+  a) Give the possibility to choose lang, voice, emotion
+  b) In case of incorrect answer the possibility to concede or to try again
+  c) make /help menu
+  d) the possibility to play independently from several devices
+  e) In case of correct answer to show the poster of the film
+  f) the possibility to choose the category of the movies
+  g) the possibility to answer "close to the exact" answer
+  h) to greet the player at the begining of the game
+  i) the possibility to choose if the game is with/without giving the options
+  j) to have a score
+
+

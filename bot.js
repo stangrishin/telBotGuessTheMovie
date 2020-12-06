@@ -2,7 +2,7 @@ require('dotenv').config();
 const { Telegraf } = require('telegraf');
 const telegramBotToken = process.env.BOT_TOKEN;
 const { db, massivFilmov } = require('./db');
-const { allInOneDone } = require('./app');
+const { allInOneDone } = require('./allInOneFunction');
 const bot = new Telegraf(telegramBotToken);
 let whatFilm = '';
 

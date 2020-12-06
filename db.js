@@ -112,6 +112,13 @@ const prepositions = [
   'without',
   'the',
   'a',
+  'be',
+  'is',
+  'are',
+  'am',
+  'and',
+  'an',
+
 ];
 
 module.exports = {

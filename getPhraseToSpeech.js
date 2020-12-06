@@ -10,8 +10,8 @@ async function getPhraseToSpeech(splittedWords) {
   let translatedIpigraf = await letsTranslateThePhraseIntoRussian(newIpigraf);
   const params = new URLSearchParams();
   params.append('text', translatedIpigraf.translations[0].text);
-  params.append('voice', 'zahar');
-  params.append('emotion', 'good');
+  params.append('voice', 'omazh');
+  params.append('emotion', 'evil');
   params.append('lang', 'ru-RU');
   params.append('speed', '1.0');
   params.append('format', 'oggopus');
