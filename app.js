@@ -1,48 +1,27 @@
 require('dotenv').config();
 const fs = require('fs');
 const fetch = require('node-fetch');
-const { db, massivFilmov } = require('./db');
-const getStringNewEpigraf = require('./getStringNewEpigraf');
-const letsTranslateThePhraseIntoRussian = require('./letsTranslateThePhraseIntoRussian');
+const getPhraseToSpeech = require('./getPhraseToSpeech');
 
-const yandexFolderId = process.env.FOLDER_ID;
 const keyYandex = process.env.KEY_YANDEX;
 
-
-async function allInOneDone() {
+async function allInOneDone(putWordsHere) {
   return new Promise(async (resolve) => {
-    let indexFilma = Math.floor(Math.random() * massivFilmov.length);
-    const whatPhrase = db[massivFilmov[indexFilma]];
-    console.log(whatPhrase);
-    whatFilm = massivFilmov[indexFilma];
-    const wordsOnly = whatPhrase.split(' ');
-    let newIpigraf = await getStringNewEpigraf(wordsOnly);
-    let translatedIpigraf = await letsTranslateThePhraseIntoRussian(newIpigraf);
-
-    const { URLSearchParams } = require('url');
-    const params = new URLSearchParams();
-    params.append('text', translatedIpigraf.translations[0].text);
-    params.append('voice', 'zahar');
-    params.append('emotion', 'good');
-    params.append('lang', 'ru-RU');
-    params.append('speed', '1.0');
-    params.append('format', 'oggopus');
-    params.append('folderId', yandexFolderId);
-    async function sintezRechi() {
+    async function sintezSpeech(keyForYandex, whichParams) {
       fetch('https://tts.api.cloud.yandex.net/speech/v1/tts:synthesize', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded',
-          Authorization: `Bearer ${keyYandex}`,
+          Authorization: `Bearer ${keyForYandex}`,
         },
-        body: params,
+        body: whichParams,
       }).then((res) => {
         const dest = fs.createWriteStream('./speech.ogg');
         res.body.pipe(dest);
         dest.on('finish', resolve);
       });
     }
-    await sintezRechi();
+    await sintezSpeech(keyYandex, await getPhraseToSpeech(putWordsHere));
   });
 }
-module.exports = allInOneDone;
+module.exports = { allInOneDone };
