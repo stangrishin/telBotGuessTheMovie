@@ -12,5 +12,6 @@ DONE(1) Add commas and other punctuation marks)
   DONE!!!(h) to greet the player at the begining of the game)
   i) the possibility to choose if the game is with/without giving the options
   j) to have a score
+  k) To add some processing bar while waiting for the record
 
 
